@@ -25,9 +25,7 @@ jobs:
 
       
     - name: Set up vcpkg
-      uses: lukka/get-vcpkg@v9
-      with:
-        vcpkgGitCommitId: 'latest'
+      uses: lukka/get-vcpkg@v11
 
     - name: Install Crow
       run: vcpkg install crow
