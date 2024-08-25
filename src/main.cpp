@@ -14,12 +14,18 @@ int main() {
 
     CROW_ROUTE(app, "/")([&cs](){
         auto card = cs.get_random_card();
-        auto page = crow::mustache::load("card.html");
-        crow::mustache::context ctx;
-        ctx["topic"] = card.topic;
-        ctx["question"] = card.question;
-        ctx["answer"] = card.answer;
-        return page.render(ctx);
+
+        crow::mustache::context content_ctx;
+        content_ctx["topic"] = card.topic;
+        content_ctx["question"] = card.question;
+        content_ctx["answer"] = card.answer;
+
+        auto content = crow::mustache::load("card.html").render_string(content_ctx);
+
+        crow::mustache::context base_ctx;
+        base_ctx["content"] = content;
+
+        return crow::mustache::load("index.html").render(base_ctx);
     });
 
     app.port(18080).multithreaded().run();
