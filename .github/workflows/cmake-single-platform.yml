@@ -22,9 +22,27 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake g++
+
+    - name: Install Crow
+      run: |
+        mkdir -p dependencies
+        cd dependencies
+        git clone https://github.com/ipkn/crow.git
+        cd crow
+        mkdir build
+        cd build
+        cmake ..
+        make -j$(nproc)
+        
     - name: Build
       # Build your program with the given configuration
       run: |
-        cmake -B ${{github.workspace}}/build -S ${{github.workspace}} 
-        cd ${{github.workspace}}/build && make
+        mkdir build
+        cd build
+        cmake ..
+        make -j$(nproc)
 
