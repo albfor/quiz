@@ -22,6 +22,15 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install cmake g++ libboost-all-dev
+
+      
+    - name: Set up vcpkg
+      uses: lukka/get-vcpkg@v9
+      with:
+        vcpkgGitCommitId: 'latest'
+
+    - name: Install Crow
+      run: vcpkg install crow
         
     - name: Build
       # Build your program with the given configuration
