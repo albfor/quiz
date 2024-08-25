@@ -1,0 +1,5 @@
+CompileFlags:
+  Add: 
+  - -I/home/albin/play/card/include
+  - -DTEMPLATES_DIR="./templates/"
+  - -DASSETS_DIR="./assets"
