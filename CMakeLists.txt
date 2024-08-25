@@ -3,7 +3,7 @@ cmake_policy(SET CMP0167 NEW)
 
 project(Quiz)
 
-# find_package(Crow)
+find_package(Crow)
 
 # Specify asset and template directories
 set(ASSETS_SOURCE_DIR "${CMAKE_SOURCE_DIR}/assets")
@@ -19,7 +19,7 @@ file(COPY ${TEMPLATES_SOURCE_DIR} DESTINATION ${TEMPLATES_OUTPUT_DIR})
 add_executable(main src/main.cpp src/CardService.cpp)
 
 # Link libraries
-# target_link_libraries(main PUBLIC Crow::Crow)
+target_link_libraries(main PUBLIC Crow::Crow)
 
 # Include directories
 target_include_directories(main PRIVATE include)
