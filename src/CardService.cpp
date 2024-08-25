@@ -6,7 +6,7 @@
 #include <iterator>
 #include <vector>
 
-CardService::CardService(std::string file_name)
+CardService::CardService(std::string& file_name)
 {
     std::srand(std::time(nullptr));
     json data;
@@ -26,18 +26,18 @@ CardService::CardService(std::string file_name)
     }
 }
 
-card::card_t CardService::get_random_card(std::vector<card::card_t> deck)
+auto CardService::get_random_card(const std::vector<card::card_t>& deck) -> card::card_t
 {
     return deck.at(std::rand() % deck.size());
 }
 
-std::vector<card::card_t> CardService::get_cards_on_topic(std::string topic)
+auto CardService::filter_cards_on_topic(std::string& topic) -> std::vector<card::card_t>
 {
     std::vector<card::card_t> on_topic;
     std::copy_if(cards.begin(), cards.end(), std::back_inserter(on_topic),
-                 [&topic](card::card_t c) {
-                    return c.topic == topic;
-                 });
+         [&topic](card::card_t c) {
+            return c.topic == topic;
+         });
     return on_topic;
 }
 
