@@ -1,11 +1,13 @@
 #include "CardService.hpp"
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
+#include <iostream>
 
 CardService::CardService(std::string file_name)
 {
     std::srand(std::time(nullptr));
-    inja::json data;
+    json data;
     std::ifstream is(file_name);
 
     if (!is.is_open())
@@ -22,12 +24,12 @@ CardService::CardService(std::string file_name)
     }
 }
 
-void card::to_json(inja::json& j, const card_t& c)
+void card::to_json(json& j, const card_t& c)
 {
-    j = inja::json{{"topic", c.topic}, {"question", c.question}, {"answer", c.answer}};
+    j = json{{"topic", c.topic}, {"question", c.question}, {"answer", c.answer}};
 }
 
-void card::from_json(const inja::json& j, card_t& c)
+void card::from_json(const json& j, card_t& c)
 {
     j.at("topic").get_to(c.topic);
     j.at("question").get_to(c.question);

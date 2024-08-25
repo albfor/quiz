@@ -1,21 +1,28 @@
+#include <crow/app.h>
+#include <crow/mustache.h>
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
+#include <crow.h>
 
 #include "CardService.hpp"
-#include "inja.hpp"
 
 using namespace std;
-using namespace inja;
 
 int main() {
+    crow::SimpleApp app;
     CardService cs(string(ASSETS_DIR) + "/cards.json");
-    json card = cs.get_random_card();
 
-    Environment env;
-    Template temp = env.parse_template(string(TEMPLATES_DIR) + "/card.html");
+    CROW_ROUTE(app, "/")([&cs](){
+        auto card = cs.get_random_card();
+        auto page = crow::mustache::load("card.html");
+        crow::mustache::context ctx;
+        ctx["topic"] = card.topic;
+        ctx["question"] = card.question;
+        ctx["answer"] = card.answer;
+        return page.render(ctx);
+    });
 
-    env.render_to(cout, temp, card);
+    app.port(18080).multithreaded().run();
 
     return 0;
 }

@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.28)
+cmake_policy(SET CMP0167 NEW)
 
 project(Quiz)
+
+find_package(Crow)
 
 # Specify asset and template directories
 set(ASSETS_SOURCE_DIR "${CMAKE_SOURCE_DIR}/assets")
@@ -14,6 +17,9 @@ file(COPY ${TEMPLATES_SOURCE_DIR} DESTINATION ${TEMPLATES_OUTPUT_DIR})
 
 # Add the executable
 add_executable(main src/main.cpp src/CardService.cpp)
+
+# Link libraries
+target_link_libraries(main PUBLIC Crow::Crow)
 
 # Include directories
 target_include_directories(main PRIVATE include)
