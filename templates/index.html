@@ -5,11 +5,8 @@
     <script src="https://unpkg.com/htmx.org@2.0.2"
         integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <style>
-        body {
-            background-color: coral;
-        }
-
         /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
         .flip-card {
             background-color: transparent;
@@ -48,13 +45,13 @@
 
         /* Style the front side (fallback if image is missing) */
         .flip-card-front {
-            background-color: #bbb;
+            background-color: var(--pico-color-blue-150);
             color: black;
         }
 
         /* Style the back side */
         .flip-card-back {
-            background-color: dodgerblue;
+            background-color: var(--pico-color-blue-750);
             color: white;
             transform: rotateY(180deg);
         }
@@ -63,7 +60,7 @@
 </head>
 
 <body>
-    <main>
+    <main class="container">
         <div id="card">
             {{{ content }}}
         </div>
