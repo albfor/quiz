@@ -17,8 +17,10 @@ void from_json(const json& j, card_t& c);
 }
 
 class CardService {
-    std::vector<json> cards;
+    static std::vector<card::card_t> cards;
 public:
     CardService(std::string file_name);
-    card::card_t get_random_card() {return cards.at(std::rand() % cards.size()); }
+
+    card::card_t get_random_card(std::vector<card::card_t> deck = cards);
+    std::vector<card::card_t> get_cards_on_topic(std::string topic);
 };

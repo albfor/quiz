@@ -3,6 +3,8 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
+#include <iterator>
+#include <vector>
 
 CardService::CardService(std::string file_name)
 {
@@ -22,6 +24,21 @@ CardService::CardService(std::string file_name)
             cards.push_back(c);
         }
     }
+}
+
+card::card_t CardService::get_random_card(std::vector<card::card_t> deck)
+{
+    return deck.at(std::rand() % deck.size());
+}
+
+std::vector<card::card_t> CardService::get_cards_on_topic(std::string topic)
+{
+    std::vector<card::card_t> on_topic;
+    std::copy_if(cards.begin(), cards.end(), std::back_inserter(on_topic),
+                 [&topic](card::card_t c) {
+                    return c.topic == topic;
+                 });
+    return on_topic;
 }
 
 void card::to_json(json& j, const card_t& c)
