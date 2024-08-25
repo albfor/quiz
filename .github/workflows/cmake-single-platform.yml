@@ -22,6 +22,9 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install cmake g++ libboost-all-dev
+        
+    - name: Installing Crow
+      run: |
         git clone https://github.com/CrowCpp/Crow.git
         mkdir build
         cd build
