@@ -1,4 +1,7 @@
 # A Quiz Web Server
+## Dependencies
+* [Crow](https://github.com/CrowCpp/Crow/)
+
 ## Build
 ```shell
 cmake -S . -B build
