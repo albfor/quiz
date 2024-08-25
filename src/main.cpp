@@ -22,7 +22,7 @@ int main() {
     CardService cs(string(ASSETS_DIR) + "/cards.json");
 
     CROW_ROUTE(app, "/")([&cs](){
-        auto card = cs.get_random_card();
+        auto card = cs.get_random_card(cs.get_cards());
         auto content_ctx = load_card_context(card);
         auto content = crow::mustache::load("card.html").render_string(content_ctx);
         crow::mustache::context base_ctx;
@@ -40,6 +40,12 @@ int main() {
         return crow::mustache::load("index.html").render(base_ctx);
     });
 
+    CROW_ROUTE(app, "/card")([&cs](){
+        auto card = cs.get_random_card(cs.get_cards());
+        auto content_ctx = load_card_context(card);
+        auto content = crow::mustache::load("card.html").render(content_ctx);
+        return content;
+    });
 
     app.port(18080).multithreaded().run();
 
