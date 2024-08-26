@@ -16,16 +16,16 @@ file(COPY ${ASSETS_SOURCE_DIR} DESTINATION ${ASSETS_OUTPUT_DIR})
 file(COPY ${TEMPLATES_SOURCE_DIR} DESTINATION ${TEMPLATES_OUTPUT_DIR})
 
 # Add the executable
-add_executable(main src/main.cpp src/CardService.cpp)
+add_executable(server src/main.cpp src/CardService.cpp)
 
 # Link libraries
-target_link_libraries(main PUBLIC Crow::Crow)
+target_link_libraries(server PUBLIC Crow::Crow)
 
 # Include directories
-target_include_directories(main PRIVATE include)
+target_include_directories(server PRIVATE include)
 
 # Define ASSETS_DIR and TEMPLATES_DIR as preprocessor macros
-target_compile_definitions(main PRIVATE 
+target_compile_definitions(server PRIVATE
     ASSETS_DIR="${ASSETS_OUTPUT_DIR}"
     TEMPLATES_DIR="${TEMPLATES_OUTPUT_DIR}"
 )
@@ -44,5 +44,5 @@ add_custom_target(copy_templates ALL
 )
 
 # Make sure the assets and templates are copied before building the main executable
-add_dependencies(main copy_assets copy_templates)
+add_dependencies(server copy_assets copy_templates)
 
