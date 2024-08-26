@@ -4,7 +4,9 @@
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <string>
 #include <vector>
+#include <set>
 
 CardService::CardService(std::string file_name)
 {
@@ -44,6 +46,16 @@ auto CardService::filter_cards_on_topic(std::string topic) -> std::vector<card::
             return c.topic == topic;
          });
     return on_topic;
+}
+
+auto CardService::get_all_topics() -> std::set<std::string>
+{
+    std::set<std::string> topics;
+    for (const auto& card : cards)
+    {
+        topics.insert(card.topic);
+    }
+    return topics;
 }
 
 void card::to_json(json& j, const card_t& c)

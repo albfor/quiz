@@ -22,9 +22,15 @@ int main() {
     CardService cs(string(ASSETS_DIR) + "/cards.json");
 
     CROW_ROUTE(app, "/")([&cs](){
-        auto card = cs.get_random_card(cs.get_cards());
-        auto content_ctx = load_card_context(card);
-        auto content = crow::mustache::load("card.html").render_string(content_ctx);
+        set<string> topics = cs.get_all_topics();
+        crow::mustache::context topic_ctx;
+        string content;
+        for (const string& t : topics)
+        {
+            crow::mustache::context ctx;
+            ctx["topic"] = t;
+            content += crow::mustache::load("topic.html").render_string(ctx);
+        }
         crow::mustache::context base_ctx;
         base_ctx["content"] = content;
         return crow::mustache::load("index.html").render(base_ctx);

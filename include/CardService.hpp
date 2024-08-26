@@ -2,6 +2,7 @@
 
 #include "nlohmann/json.hpp"
 #include <vector>
+#include <set>
 
 using json = nlohmann::json;
 
@@ -24,4 +25,5 @@ public:
     auto get_random_card(const std::vector<card::card_t>& deck) -> card::card_t;
     auto filter_cards_on_topic(std::string topic) -> std::vector<card::card_t>;
     auto get_cards() -> std::vector<card::card_t>;
+    auto get_all_topics() -> std::set<std::string>;
 };
