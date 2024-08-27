@@ -1,6 +1,7 @@
 # A Quiz Web Server
 ## Dependencies
 * [Crow](https://github.com/CrowCpp/Crow/)
+* [JSON for Modern C++](https://github.com/nlohmann/json/)
 
 ## Build
 ```shell
