@@ -1,62 +1,62 @@
 {
   "cards": [
     {
-      "topic": "General Knowledge",
+      "topic": "general_knowledge",
       "question": "What is the capital city of Canada?",
       "answer": "Ottawa"
     },
     {
-      "topic": "General Knowledge",
+      "topic": "general_knowledge",
       "question": "Who wrote the play 'Romeo and Juliet'?",
       "answer": "William Shakespeare"
     },
     {
-      "topic": "General Knowledge",
+      "topic": "general_knowledge",
       "question": "What element has the chemical symbol 'O'?",
       "answer": "Oxygen"
     },
     {
-      "topic": "General Knowledge",
+      "topic": "general_knowledge",
       "question": "In what year did the Titanic sink?",
       "answer": "1912"
     },
     {
-      "topic": "Geography",
+      "topic": "geography",
       "question": "Which desert is the largest in the world?",
       "answer": "Sahara Desert"
     },
     {
-      "topic": "Geography",
+      "topic": "geography",
       "question": "Mount Everest is part of which mountain range?",
       "answer": "The Himalayas"
     },
     {
-      "topic": "History",
+      "topic": "history",
       "question": "Who was the first President of the United States?",
       "answer": "George Washington"
     },
     {
-      "topic": "History",
+      "topic": "history",
       "question": "Which war was fought between the North and South regions in the United States?",
       "answer": "The American Civil War"
     },
     {
-      "topic": "Science",
+      "topic": "science",
       "question": "What is the most abundant gas in Earth's atmosphere?",
       "answer": "Nitrogen"
     },
     {
-      "topic": "Science",
+      "topic": "science",
       "question": "How many bones are in the human body?",
       "answer": "206"
     },
     {
-      "topic": "Pop Culture",
+      "topic": "pop_culture",
       "question": "Which famous film franchise features the character 'Darth Vader'?",
       "answer": "Star Wars"
     },
     {
-      "topic": "Pop Culture",
+      "topic": "pop_culture",
       "question": "Who is the author of the 'Harry Potter' book series?",
       "answer": "J.K. Rowling"
     }
