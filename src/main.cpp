@@ -25,6 +25,8 @@ int main() {
         set<string> topics = cs.get_all_topics();
         crow::mustache::context topic_ctx;
 
+        string nav_bar = crow::mustache::load("nav_bar.html").render_string();
+
         string content = "<h1>Topics</h1>";
         for (const string& t : topics)
         {
@@ -35,6 +37,7 @@ int main() {
 
         crow::mustache::context base_ctx;
         base_ctx["content"] = content;
+        base_ctx["nav_bar"] = nav_bar;
         return crow::mustache::load("index.html").render(base_ctx);
     });
 
